@@ -11,7 +11,7 @@ import spoon from '../assets/spoon.svg';
 import welcome from '../assets/welcome.jpg';
 import welcome2 from '../assets/welcome2.jpg';
 
-export default {
+const images = {
   bg,
   gallery01,
   gallery02,
@@ -25,3 +25,5 @@ export default {
   welcome,
   welcome2,
 };
+
+export default images

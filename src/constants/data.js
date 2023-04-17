@@ -293,4 +293,9 @@ const burgers = [
   },
 ];
 
-export default { pizzas, burgers };
+const menu ={
+  pizzas, 
+  burgers
+}
+
+export default menu;
