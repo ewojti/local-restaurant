@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import {GiHamburgerMenu} from 'react-icons/gi';
 import {MdOutlineRestaurantMenu} from 'react-icons/md';
-
 import images from '../../constants/images'
-
 import './Navbar.css';
 
 const Navbar = () => {
@@ -28,10 +26,10 @@ const Navbar = () => {
           <a href="#about">O nas</a>
         </li>
         <li>
-          <a href="#contact">Kontakt</a>
+          <a href="#gallery">Galeria</a>
         </li>
         <li>
-          <a href="#gallery">Galeria</a>
+          <a href="#contact">Kontakt</a>
         </li>
       </ul>
       <div className="app__navbar-smallscreen">
@@ -62,10 +60,10 @@ const Navbar = () => {
                 <a href="#about">O nas</a>
               </li>
               <li>
-                <a href="#contact">Kontakt</a>
+                <a href="#gallery">Galeria</a>
               </li>
               <li>
-                <a href="#gallery">Galeria</a>
+                <a href="#contact">Kontakt</a>
               </li>
             </ul>
           </div>
