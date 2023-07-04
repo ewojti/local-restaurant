@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-.app__menuitem-head{
+.app__menuitem-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,8 +21,8 @@
     flex: 1;
 }
 
-.app__menuitem-dash{
-    width: 90px;
+.app__menuitem-dash {
+    width: 100px;
     height: 1px;
     background: #FAFAFA;
     margin: 0 1rem;
@@ -30,7 +30,18 @@
 
 .app__menuitem-price {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
+    gap: 2rem;
+}
+
+.app__menuitem-price-item {
+    display: flex;
     flex-direction: row;
+}
+
+.app__menuitem-price-item button {
+    padding: 0.5rem 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    cursor: pointer;
 }

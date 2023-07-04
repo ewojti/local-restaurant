@@ -42,6 +42,11 @@
   margin-left: 2rem;
 }
 
+.app__react-icons{
+  color: var(--color-golden);
+  font-size: 2rem;
+}
+
 .app__wrapper_img-reverse {
   justify-content: flex-start;
   margin-right: 2rem;
