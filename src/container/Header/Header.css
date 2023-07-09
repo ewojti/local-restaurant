@@ -4,10 +4,11 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    min-height: calc(100vh - 130px);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    overflow: hidden;
 }
 
 .app__header-h1 {
@@ -19,6 +20,48 @@
     font-size: 90px;
 }
 
-.app__header_img{
+.app__header_img {
     width: 80%;
+}
+
+.app__header-deliver-button{
+    position: relative;
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 320px;
+    width: 100%;
+    font-size: 2rem;
+    cursor: pointer;
+    background-color: var(--color-golden);
+    border: var(--color-white) 1px solid;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    font-weight: 300;
+    z-index: 1;
+    color: var(--color-black);
+    font-family: var(--font-base);
+}
+.app__header-deliver-button:active{
+    transform: scale(0.95);
+}
+
+.app__header-deliver-qty {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #eee;
+    background-color: #f02d34;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-weight: 600;
 }

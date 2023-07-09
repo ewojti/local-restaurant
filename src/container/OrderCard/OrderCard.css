@@ -1,0 +1,106 @@
+.modal-overlay {
+    background: rgba(49, 49, 49, 0.8);
+}
+
+.app__modal--order,
+.modal-overlay {
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.app__modal--order-content {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #111;
+    color: var(--color-golden);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.8rem;
+    max-width: 360px;
+    width: 100%;
+    height: auto;
+}
+.app__modal--order-content-title{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-golden);
+}
+.app__modal--order-content-title > h2{
+    font-size: 2rem;
+}
+
+.app__modal--order-content-title-btn {
+    background-color: var(--color-golden);
+    color: var(--color-golden);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+
+.modal-close {
+    margin-top: 1rem;
+    align-self: center;
+}
+
+.app__modal--order-delivery-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.app__modal--order-delivery > h2 {
+    border-bottom: 1px solid var(--color-golden);
+    font-size: 1.3rem;
+}
+.app__modal--order-delivery-form-adress {
+    display: flex;
+    flex-direction: column;
+}
+
+.app__modal--order-delivery-form-adress>input {
+    height: 2.5rem;
+    border: none;
+    text-align: center;
+    font-size: 1.4rem;
+}
+.app__modal--order-delivery-form-adress{
+    border: none;
+}
+
+.app__modal--order-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media screen and (min-width: 480px) {
+    .app__modal--order-content {
+        max-width: 470px;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .app__modal--order-content {
+        max-width: 690px;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .app__modal--order-content {
+        max-width: 1000px;
+        width: 100%;
+    }
+}

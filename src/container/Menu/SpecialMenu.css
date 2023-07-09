@@ -18,6 +18,9 @@
     cursor: pointer;
     gap: 2rem;
 }
+.app__specialMenu-menu_pizza{
+    border: solid 2px var(--color-golden);
+}
 
 .app__specialMenu_menu_heading {
     font-family: var(--font-base);

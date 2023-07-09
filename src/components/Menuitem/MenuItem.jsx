@@ -1,6 +1,4 @@
 import React from "react";
-import { AiOutlinePlus } from "react-icons/ai";
-
 import "./MenuItem.css";
 
 const MenuItem = ({ name, price30, price40, tags }) => (
@@ -13,18 +11,12 @@ const MenuItem = ({ name, price30, price40, tags }) => (
       </div>
       <div className="app__menuitem-dash"></div>
       <div className="app__menuitem-price">
-        <div className="app__menuitem-price-item">
-          <button className="p__cormorant">
-            {price30}
-            <AiOutlinePlus />
-          </button>
-        </div>
-        <div className="app__menuitem-price-item">
-          <button className="p__cormorant">
-            {price40}
-            <AiOutlinePlus />
-          </button>
-        </div>
+        <button className="app__menuitem-price-item">
+          {price30}
+        </button>
+        <button className="app__menuitem-price-item">
+          {price40}
+        </button>
       </div>
     </div>
     <div className="app__menuitem-sub">

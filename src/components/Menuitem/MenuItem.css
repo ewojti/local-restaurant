@@ -1,7 +1,6 @@
 .app__menuitem {
     width: 100%;
     margin: 1rem 0;
-
     display: flex;
     flex-direction: column;
 }
@@ -18,7 +17,7 @@
 }
 
 .app__menuitem-name {
-    flex: 1;
+    flex: 1;    
 }
 
 .app__menuitem-dash {
@@ -33,15 +32,21 @@
     gap: 2rem;
 }
 
+
 .app__menuitem-price-item {
-    display: flex;
-    flex-direction: row;
+    padding: 0.7rem 2rem;
+    border-radius: 1rem;
+    background-color: var(--color-white);
+    font-size: 1.3rem;
+    font-family: var(--font-base);
+    cursor: pointer;
+    border: none;
 }
 
 .app__menuitem-price-item button {
-    padding: 0.5rem 1.5rem;
-    border-radius: 1rem;
-    background-color: var(--color-white);
     color: var(--color-black);
-    cursor: pointer;
+}
+
+.app__menuitem-price-item:active {
+    transform: scale(0.96);
 }

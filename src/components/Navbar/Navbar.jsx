@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
-import {GiHamburgerMenu, GiNotebook} from 'react-icons/gi';
-import {MdOutlineRestaurantMenu} from 'react-icons/md';
-import images from '../../constants/images'
-import './Navbar.css';
+import React, { useState } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { MdOutlineRestaurantMenu } from "react-icons/md";
+import images from "../../constants/images";
+import "./Navbar.css";
 
 const Navbar = () => {
-  const [toggleMenu, setToggleMenu] = useState(false)
+  const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
     <nav className="app__navbar">
@@ -30,9 +30,6 @@ const Navbar = () => {
         </li>
         <li>
           <a href="#contact">Kontakt</a>
-        </li>
-        <li>
-          <a href=''><GiNotebook /></a>
         </li>
       </ul>
       <div className="app__navbar-smallscreen">
@@ -73,6 +70,7 @@ const Navbar = () => {
         )}
       </div>
     </nav>
-  );};
+  );
+};
 
 export default Navbar;

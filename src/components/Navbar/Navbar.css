@@ -3,9 +3,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--color-black);
+    /* background: var(--color-black); */
     padding: 1rem 6rem;
     height: 130px;
+      position: fixed;
+      top: 0;
 }
 
 .app__navbar-logo {
