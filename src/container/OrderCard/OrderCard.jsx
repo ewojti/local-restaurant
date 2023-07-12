@@ -17,6 +17,7 @@ const OrderCard = ({ isOpen, handleClose }) => {
           </div>
           <div className="app__modal--order-delivery">
             <h2>Restaruacja będzie realizować zamówienia od 11:00</h2>
+            {/* Zamówienie */}
             <h3>Sposób realizacji</h3>
             <form
               className="app__modal--order-delivery-form p__cormorant"
