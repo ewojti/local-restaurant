@@ -6,9 +6,9 @@ import pizzas from "../../constants/data";
 import "./SpecialMenu.css";
 
 const SpecialMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenPizza, setIsOpenPizza] = useState(false);
   const handleOpenMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpenPizza(!isOpenPizza);
   };
 
   return (
@@ -27,7 +27,7 @@ const SpecialMenu = () => {
             <FaAngleDown />
           </div>
         </div>
-        {isOpen && (
+        {isOpenPizza && (
           <div className="app__specialMenu_menu_items">
             {pizzas.map((pizza, index) => (
               <MenuItem

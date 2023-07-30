@@ -14,9 +14,9 @@
     position: fixed;
 }
 
-.app__modal--food-item{
+.app__modal--food-item {
     z-index: 2;
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -30,19 +30,39 @@
     max-width: 360px;
     width: 100%;
     height: auto;
+    gap: 0.5rem;
 }
 
-.app__modal--food-item-stepper{
+.app__modal--food-item-option {
     display: flex;
-    gap: 1rem;
-    align-items: center;
+    gap: 0.5rem;
 }
 
-.app__modal--food-item-stepper p{
+.app__modal--food-item-option input {
+    color: var(--color-golden);
+    background: var(--color-golden);
+
+}
+
+.app__modal--food-item-option label {
     font-size: 20px;
 }
 
-.app__modal--food-item-stepper button{
+.app__modal--food-item-stepper {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    border-top: 0.5px solid var(--color-golden);
+    border-bottom: 0.5px solid var(--color-golden);
+    padding: 1rem
+}
+
+.app__modal--food-item-stepper p {
+    font-size: 20px;
+}
+
+.app__modal--food-item-stepper button {
     width: 30px;
     height: 30px;
     background-color: var(--color-crimson);
@@ -57,22 +77,47 @@
     align-self: center;
 }
 
+.btn-disable {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.app__modal--food-item-close {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+}
+
+.app__modal--food-content-title-btn {
+    background-color: var(--color-golden);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+
+.app__modal--food-btn {
+    align-self: flex-end;
+}
+
 @media screen and (min-width: 480px) {
-    .app__modal--food-item{
+    .app__modal--food-item {
         max-width: 470px;
         width: 100%;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .app__modal--food-item{
+    .app__modal--food-item {
         max-width: 690px;
         width: 100%;
     }
 }
 
 @media screen and (min-width: 1024px) {
-    .app__modal--food-item{
+    .app__modal--food-item {
         max-width: 1000px;
         width: 100%;
     }

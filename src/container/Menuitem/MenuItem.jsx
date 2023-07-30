@@ -1,11 +1,15 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./MenuItem.css";
 import FoodCard from "../../components/FoodCard/FoodCard";
 
 const MenuItem = ({ name, price30, price40, tags }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const handleOpenModal = () => setIsOpen(true);
-    const handleCloseModal = () => setIsOpen(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [pizzaChoosen, setPizzaChoosen] = useState();
+  const handleOpenModal = (event) => {
+    setIsOpen(true);
+    setPizzaChoosen(event.target.value);
+  };
+  const handleCloseModal = () => setIsOpen(false);
   return (
     <>
       <div className="app__menuitem">
@@ -20,12 +24,14 @@ const MenuItem = ({ name, price30, price40, tags }) => {
             <button
               className="app__menuitem-price-item"
               onClick={handleOpenModal}
+              value={price30}
             >
               {price30}
             </button>
             <button
               className="app__menuitem-price-item"
               onClick={handleOpenModal}
+              value={price40}
             >
               {price40}
             </button>
@@ -36,7 +42,16 @@ const MenuItem = ({ name, price30, price40, tags }) => {
             {tags}
           </p>
         </div>
-        <FoodCard isOpen={isOpen} handleClose={handleCloseModal} name={name} price30={price30} price40={price40} tags={tags} />
+        <FoodCard
+          isOpen={isOpen}
+          handleClose={handleCloseModal}
+          name={name}
+          price30={price30}
+          price40={price40}
+          tags={tags}
+          pizzaChoosen={pizzaChoosen}
+          setPizzaChoosen={setPizzaChoosen}
+        />
       </div>
     </>
   );

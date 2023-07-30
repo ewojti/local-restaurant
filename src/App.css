@@ -107,8 +107,20 @@
   text-transform: capitalize;
 }
 
+.foodname__cormorant {
+  font-family: var(--font-base);
+  color: var(--color-golden);
+  font-size: 40px;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+}
+
 .spoon__img {
   width: 45px;
+}
+
+input[type="radio"] {
+  color: var(--color-golden)
 }
 
 @media screen and (min-width: 2000px) {

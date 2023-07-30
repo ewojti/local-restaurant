@@ -1,65 +1,102 @@
-import React, { useState } from "react";
+import React from "react";
 import "./FoodCard.css";
 import { GrClose } from "react-icons/gr";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "../../features/counter/counterSlice";
+import {
+  decrement,
+  increment,
+  resetValue,
+} from "../../features/counter/counterSlice";
 
-const FoodCard = ({ isOpen, handleClose, name, tags, price30, price40 }) => {
-  const [countFoodItem, setCountFoodItem] = useState(1);
-  const [choosenPizza, setChoosenPizza] = useState(price30);
-  const [newPrice, setNewPrice] = useState(choosenPizza);
+const FoodCard = ({
+  isOpen,
+  handleClose,
+  name,
+  tags,
+  price30,
+  price40,
+  pizzaChoosen,
+  setPizzaChoosen,
+}) => {
+
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
 
   const handleAddFood = () => {
-    setCountFoodItem((prevCountFoodItem) => (prevCountFoodItem += 1));
-    setNewPrice(
-      (prevNewPrice) => parseFloat(prevNewPrice) + parseFloat(choosenPizza)
-    );
+    dispatch(increment());
   };
   const handleSubtractionFood = () => {
-    setCountFoodItem((prevCountFoodItem) => (prevCountFoodItem -= 1));
-    setNewPrice(
-      (prevNewPrice) => parseFloat(prevNewPrice) - parseFloat(choosenPizza)
-    );
+    dispatch(decrement());
   };
+  
+  const exitCard = () => {
+    handleClose();
+  };
+
+  const addFood = () => {
+    exitCard()
+  }
   return (
     isOpen && (
       <div className="app__modal--food">
-        <div onClick={handleClose} className="modal-overlay"></div>
+        <div onClick={exitCard} className="modal-overlay"></div>
         <div className="app__modal--food-item">
-          <GrClose
-            className="app__modal--food-item-close"
-            onClick={handleClose}
-          />
+          <div className="app__modal--food-item-close">
+            <span>
+              <GrClose
+                onClick={exitCard}
+                className="app__modal--food-content-title-btn"
+              />
+            </span>
+          </div>
           <div className="app__modal--food-item-name">
-            <div>{name}</div>
+            <div className="foodname__cormorant">{name}</div>
             <div>{tags}</div>
           </div>
           <div className="app__modal--food-item-options">
             <div className="app__modal--food-item-option">
-              <div
-                onClick={() => {
-                  setChoosenPizza(price30);
+              <input
+                type="radio"
+                id="pizza30"
+                name="title"
+                value={price30}
+                checked={pizzaChoosen === price30}
+                onChange={(e) => {
+                  setPizzaChoosen(e.target.value);
+                  dispatch(resetValue());
                 }}
-              >
-                {price30}
-              </div>
-              <div
-                onClick={() => {
-                  setChoosenPizza(price40);
+              ></input>
+              <label htmlFor="pizza30">⌀ 30cm {price30}</label>
+              <input
+                type="radio"
+                id="pizza40"
+                name="title"
+                value={price40}
+                checked={pizzaChoosen === price40}
+                onChange={(e) => {
+                  setPizzaChoosen(e.target.value);
+                  dispatch(resetValue());
                 }}
-              >
-                {price40}
-              </div>
+              ></input>
+              <label htmlFor="pizza40">⌀ 40cm {price40}</label>
             </div>
           </div>
           <div className="app__modal--food-item-stepper">
-            <button onClick={handleSubtractionFood}>-</button>
-            <p className="app__modal--food-item-stepper-step">
-              {countFoodItem}
-            </p>
+            <button
+              className={count === 1 && "btn-disable"}
+              onClick={handleSubtractionFood}
+            >
+              -
+            </button>
+            <p className="app__modal--food-item-stepper-step">{count}</p>
             <button onClick={handleAddFood}>+</button>
           </div>
-          <button className="custom__button">Dodaj {newPrice} zł</button>
+          <button
+            className="custom__button app__modal--food-btn"
+            onClick={addFood}
+          >
+            Dodaj {pizzaChoosen * count} zł
+          </button>
         </div>
       </div>
     )
