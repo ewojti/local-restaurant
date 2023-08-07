@@ -1,12 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./FoodCard.css";
 import { GrClose } from "react-icons/gr";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  decrement,
-  increment,
-  resetValue,
-} from "../../features/counter/counterSlice";
+import CartContext from "../../CartContext";
+import { useContext } from "react";
 
 const FoodCard = ({
   isOpen,
@@ -18,24 +14,28 @@ const FoodCard = ({
   pizzaChoosen,
   setPizzaChoosen,
 }) => {
-
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
+  const { addToCart } = useContext(CartContext);
+  const { foodItem } = useContext(CartContext);
+  const [count, setCount] = useState(1);
 
   const handleAddFood = () => {
-    dispatch(increment());
+    setCount((prevCount) => (prevCount += 1));
   };
   const handleSubtractionFood = () => {
-    dispatch(decrement());
+    setCount((prevCount) => (prevCount -= 1));
   };
-  
+  let totalFoodPrice = pizzaChoosen * count;
+
   const exitCard = () => {
     handleClose();
+    console.log(foodItem);
+    setCount(1)
   };
 
-  const addFood = () => {
-    exitCard()
-  }
+  const addFood = (value) => {
+    exitCard();
+  };
+
   return (
     isOpen && (
       <div className="app__modal--food">
@@ -63,7 +63,6 @@ const FoodCard = ({
                 checked={pizzaChoosen === price30}
                 onChange={(e) => {
                   setPizzaChoosen(e.target.value);
-                  dispatch(resetValue());
                 }}
               ></input>
               <label htmlFor="pizza30">⌀ 30cm {price30}</label>
@@ -75,7 +74,6 @@ const FoodCard = ({
                 checked={pizzaChoosen === price40}
                 onChange={(e) => {
                   setPizzaChoosen(e.target.value);
-                  dispatch(resetValue());
                 }}
               ></input>
               <label htmlFor="pizza40">⌀ 40cm {price40}</label>
@@ -93,9 +91,12 @@ const FoodCard = ({
           </div>
           <button
             className="custom__button app__modal--food-btn"
-            onClick={addFood}
+            onClick={() => {
+              addToCart(name, tags, totalFoodPrice, count);
+              handleClose();
+            }}
           >
-            Dodaj {pizzaChoosen * count} zł
+            Dodaj {totalFoodPrice} zł
           </button>
         </div>
       </div>

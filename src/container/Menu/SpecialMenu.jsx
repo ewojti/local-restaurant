@@ -5,7 +5,7 @@ import pizzas from "../../constants/data";
 
 import "./SpecialMenu.css";
 
-const SpecialMenu = () => {
+const SpecialMenu = ({foodItem}) => {
   const [isOpenPizza, setIsOpenPizza] = useState(false);
   const handleOpenMenu = () => {
     setIsOpenPizza(!isOpenPizza);
@@ -15,7 +15,7 @@ const SpecialMenu = () => {
     <div className="app__specialMenu flex__center section__padding" id="menu">
       <div className="app__specialMenu-title">
         <SubHeading title="Lorem Ipsum Dolor Sit Amet" />
-        <h1 className="headtext__cormorant">Menu</h1>
+        <h1 className="headtext__cormorant">Menu {foodItem}</h1>
       </div>
       <div className="app__specialMenu-menu">
         <div

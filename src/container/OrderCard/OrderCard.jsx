@@ -1,17 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./OrderCard.css";
 import { GrClose } from "react-icons/gr";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  decrement,
-  increment,
-  resetValue,
-} from "../../features/counter/counterSlice";
+import CartContext from "../../CartContext";
 
 const OrderCard = ({ isOpen, handleClose }) => {
   const [formDelivery, setFormDelivery] = useState(false);
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
+  const { foodItem } = useContext(CartContext);
   return (
     isOpen && (
       <div className="app__modal--order">
@@ -26,8 +20,20 @@ const OrderCard = ({ isOpen, handleClose }) => {
           </div>
           <div className="app__modal--order-delivery">
             <h2>Restaruacja będzie realizować zamówienia od 11:00</h2>
-            <h2>Koszyk jest pusty</h2>
-            {count}
+            <div>
+              {foodItem.map((food) => (
+                <div>
+                  {food.name}
+                  {food.pizzaPrice}
+                  <div>
+                    <button>+</button>
+                    {food.count}
+                    <button>-</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
             <h2>Sposób realizacji</h2>
             <form
               className="app__modal--order-delivery-form p__cormorant"
