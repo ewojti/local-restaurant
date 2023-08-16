@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./MenuItem.css";
 import FoodCard from "../../components/FoodCard/FoodCard";
 
-const MenuItem = ({ name, price30, price40, tags }) => {
+const MenuItem = ({ id, name, price30, price40, tags }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [pizzaChoosen, setPizzaChoosen] = useState();
   const handleOpenModal = (event) => {
@@ -46,6 +46,7 @@ const MenuItem = ({ name, price30, price40, tags }) => {
           isOpen={isOpen}
           handleClose={handleCloseModal}
           name={name}
+          id={id}
           price30={price30}
           price40={price40}
           tags={tags}

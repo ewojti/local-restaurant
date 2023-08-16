@@ -7,6 +7,7 @@ import { useContext } from "react";
 const FoodCard = ({
   isOpen,
   handleClose,
+  id,
   name,
   tags,
   price30,
@@ -15,7 +16,7 @@ const FoodCard = ({
   setPizzaChoosen,
 }) => {
   const { addToCart } = useContext(CartContext);
-  const { foodItem } = useContext(CartContext);
+  const { combinedFoodItem } = useContext(CartContext);
   const [count, setCount] = useState(1);
 
   const handleAddFood = () => {
@@ -28,13 +29,13 @@ const FoodCard = ({
 
   const exitCard = () => {
     handleClose();
-    console.log(foodItem);
-    setCount(1)
+    console.log(combinedFoodItem);
+    setCount(1);
   };
 
-  const addFood = (value) => {
-    exitCard();
-  };
+  // const addFood = (value) => {
+  //   exitCard();
+  // };
 
   return (
     isOpen && (
@@ -57,7 +58,6 @@ const FoodCard = ({
             <div className="app__modal--food-item-option">
               <input
                 type="radio"
-                id="pizza30"
                 name="title"
                 value={price30}
                 checked={pizzaChoosen === price30}
@@ -68,7 +68,6 @@ const FoodCard = ({
               <label htmlFor="pizza30">⌀ 30cm {price30}</label>
               <input
                 type="radio"
-                id="pizza40"
                 name="title"
                 value={price40}
                 checked={pizzaChoosen === price40}
@@ -81,20 +80,35 @@ const FoodCard = ({
           </div>
           <div className="app__modal--food-item-stepper">
             <button
-              className={count === 1 && "btn-disable"}
+              className="app__modal--food-item-stepper-button"
+              onClick={handleAddFood}
+            >
+              +
+            </button>
+            <p className="app__modal--food-item-stepper-step">{count}</p>
+            <button
+              className={
+                count === 1
+                  ? "btn-disable app__modal--food-item-stepper-button"
+                  : "app__modal--food-item-stepper-button"
+              }
               onClick={handleSubtractionFood}
             >
               -
             </button>
-            <p className="app__modal--food-item-stepper-step">{count}</p>
-            <button onClick={handleAddFood}>+</button>
           </div>
           <button
             className="custom__button app__modal--food-btn"
             onClick={() => {
-              addToCart(name, tags, totalFoodPrice, count);
-              handleClose();
-            }}
+              addToCart(
+                id,
+                name.toString(),
+                tags,
+                totalFoodPrice,
+                count,
+                pizzaChoosen
+              );
+              }}
           >
             Dodaj {totalFoodPrice} zł
           </button>

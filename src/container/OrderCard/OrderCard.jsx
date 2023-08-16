@@ -2,13 +2,22 @@ import React, { useContext, useState } from "react";
 import "./OrderCard.css";
 import { GrClose } from "react-icons/gr";
 import CartContext from "../../CartContext";
+import { ImBin } from "react-icons/im";
 
 const OrderCard = ({ isOpen, handleClose }) => {
   const [formDelivery, setFormDelivery] = useState(false);
   const { foodItem } = useContext(CartContext);
+  const { mergedAndSummedFoodItems } = useContext(CartContext);
+  const { removeFromCart } = useContext(CartContext);
+  const { increaseCounter } = useContext(CartContext);
+  const { removeCounter } = useContext(CartContext);
+      const removeFromCard = (id) => {
+        return mergedAndSummedFoodItems.filter((food) => food.id !== id);
+      };
+
   return (
     isOpen && (
-      <div className="app__modal--order">
+      <div className="app__modal--order" id="order-card">
         <div onClick={handleClose} className="modal-overlay"></div>
         <div className="app__modal--order-content">
           <div className="app__modal--order-content-title">
@@ -21,14 +30,35 @@ const OrderCard = ({ isOpen, handleClose }) => {
           <div className="app__modal--order-delivery">
             <h2>Restaruacja będzie realizować zamówienia od 11:00</h2>
             <div>
-              {foodItem.map((food) => (
-                <div>
+              {mergedAndSummedFoodItems.map((food) => (
+                <div key={food.id}>
                   {food.name}
-                  {food.pizzaPrice}
-                  <div>
-                    <button>+</button>
-                    {food.count}
-                    <button>-</button>
+                  <div className="app__modal--food-item-stepper">
+                    <button
+                      className="app__modal--food-item-stepper-button"
+                      onClick={() => increaseCounter(food.id, food.price)}
+                    >
+                      +
+                    </button>
+                    {food.counter}
+                    <button
+                      className={
+                        food.counter === 1
+                          ? "btn-disable app__modal--food-item-stepper-button"
+                          : "app__modal--food-item-stepper-button"
+                      }
+                      onClick={() => removeCounter(food.id, food.price)}
+                    >
+                      -
+                    </button>
+                    <div
+                      onClick={() => {
+                        removeFromCart(food.id, food.price);
+                      }}
+                    >
+                      <span>{food.pizzaPrice * food.counter} zł</span>
+                      <ImBin />
+                    </div>
                   </div>
                 </div>
               ))}

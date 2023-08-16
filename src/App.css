@@ -198,3 +198,52 @@ input[type="radio"] {
     line-height: 70px;
   }
 }
+
+.app__modal--food-item {
+  z-index: 2;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #111;
+  color: var(--color-golden);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.8rem;
+  max-width: 360px;
+  width: 100%;
+  height: auto;
+  gap: 0.5rem;
+}
+
+.app__modal--food-item-option {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.app__modal--food-item-option label {
+  font-size: 20px;
+}
+
+.app__modal--food-item-stepper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.app__modal--food-item-stepper p {
+  font-size: 20px;
+}
+
+.app__modal--food-item-stepper-button {
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-crimson);
+  border: none;
+  border-radius: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
